@@ -12,7 +12,7 @@ Description: |
 
 Parameters:
   KeyPairName:
-    Description: Enter the name of your Key Pair for SSH connections.
+    Description: secondkey
     Type: AWS::EC2::KeyPair::KeyName
     ConstraintDescription: Must be one of the existing EC2 KeyPair
 
