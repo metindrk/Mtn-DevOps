@@ -1,3 +1,4 @@
+
 # Hands-on Docker-11 : Build images with ENV and ARG instructions
 
 Purpose of the this hands-on training is to give the students understanding to ENV and ARG instructions in Dockerfile

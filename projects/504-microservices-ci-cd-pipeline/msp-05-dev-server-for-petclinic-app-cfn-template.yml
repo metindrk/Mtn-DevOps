@@ -6,7 +6,7 @@ Description: >
 
 Parameters:
   KeyPairName:
-    Description: Enter the name of your Key Pair for SSH connections.
+    Description: secondkey
     Type: AWS::EC2::KeyPair::KeyName
     ConstraintDescription: Must one of the existing EC2 KeyPair
 
@@ -73,7 +73,7 @@ Resources:
     Properties:
       LaunchTemplateData:
         ImageId: ami-01cc34ab2709337aa
-        InstanceType: t3.medium
+        InstanceType: t3a.medium
         KeyName: !Ref KeyPairName
         SecurityGroupIds:
           - !GetAtt PetclinicDemoSG.GroupId
