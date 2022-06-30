@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  postgre:
+    container_name: oliver_postgre
+    image: olivercw/todopostgre
+    # restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=clarustodo
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Pp123456789
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - oliver-net
+  nodejs: 
+    container_name: oliver_nodejs
+    image: olivercw/todonodejs
+    depends_on: 
+      - db-server
+    restart: always
+    ports:
+      - 5000:5000
+    networks:
+      - oliver-net
+  react:
+    container_name: oliver_react
+    image: olivercw/todoreact
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - oliver-net
+    labels:
+      kompose.service.type: "nodeport"
+      kompose.service.nodeport.port: "30001"
+networks:
+  oliver-net:
+volumes:
+  db_data:
+
+# docker-compose up -d
+# docker-compose down
+# kompose convert -f docker-compose.yml -o k8s/
+# cd k8s
+# kubectl apply -f .
+# kubectl delete -f .
+# rm -rf *
